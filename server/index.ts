@@ -3,8 +3,9 @@ import { createExpressHandler } from './createExpressHandler';
 import express, { RequestHandler } from 'express';
 import path from 'path';
 import { ServerlessFunction } from './types';
-const bodyParser = require("body-parser");
+
 const PORT = process.env.PORT ?? 8081;
+const bodyParser = require("body-parser");
 
 const app = express();
 app.use(express.json());
