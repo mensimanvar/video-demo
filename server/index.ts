@@ -3,12 +3,12 @@ import { createExpressHandler } from './createExpressHandler';
 import express, { RequestHandler } from 'express';
 import path from 'path';
 import { ServerlessFunction } from './types';
-
+const bodyParser = require("body-parser");
 const PORT = process.env.PORT ?? 8081;
 
 const app = express();
 app.use(express.json());
-
+app.use(bodyParser.json());
 // This server reuses the serverless endpoints from the "plugin-rtc" Twilio CLI Plugin, which is used when the "npm run deploy:twilio-cli" command is run.
 // The documentation for this endpoint can be found in the README file here: https://github.com/twilio-labs/plugin-rtc
 const tokenFunction: ServerlessFunction = require('@twilio-labs/plugin-rtc/src/serverless/functions/token').handler;
